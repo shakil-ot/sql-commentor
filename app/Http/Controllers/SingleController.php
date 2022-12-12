@@ -17,11 +17,13 @@ class SingleController extends Controller
 
         $name = \Illuminate\Support\Str::random(4);
 
-        User::select('*')->where(['id' => 2])->first();
+        $data = User::select('*')->where(['id' => 2])->first();
 
         $query = DB::getQueryLog();
 
         Log::info('', $query);
+
+        return dd($data);
     }
 
 
@@ -32,10 +34,12 @@ class SingleController extends Controller
 
         $name = \Illuminate\Support\Str::random(4);
 
-        User::all();
+        $data = User::all();
 
         $query = DB::getQueryLog();
 
         Log::info('', $query);
+
+        return dd($data);
     }
 }
