@@ -1,0 +1,21 @@
+{
+  "name": "shakil/query-tracker",
+  "description": "",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "shakil",
+      "email": "shakil@orangetoolz.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Shakil\\QueryTracker\\": "src/"
+    }
+  },
+
+  "require": {
+  },
+  "minimum-stability": "dev"
+}
