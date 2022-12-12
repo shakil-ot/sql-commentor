@@ -23,7 +23,18 @@ class DatabaseSeeder extends Seeder
                 'password' => Hash::make($name),
             ]);
 
+            \App\Test::create([
+                'name' => $name,
+                'email' => $name . '@gmail.com',
+                'address' => null,
+                'status' => 1
+            ]);
+
+
         }
+
+
+
 
     }
 }

@@ -6,6 +6,7 @@ use App\Test;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
 class TestController extends Controller
@@ -38,4 +39,51 @@ class TestController extends Controller
 //            $data
 //        ];
     }
+
+
+    public function create()
+    {
+        DB::enableQueryLog();
+
+        $data = [];
+
+        foreach (range(1, 500) as $user) {
+            $name = \Illuminate\Support\Str::random(4);
+            $data[] = [
+                'name' => $name,
+                'email' => $name . '@gmail.com',
+                'password' => Hash::make($name),
+            ];
+        }
+
+        User::insert($data);
+
+        $query = DB::getQueryLog();
+
+        Log::info('', $query);
+    }
+
+
+    public function singleCreate()
+    {
+
+        DB::enableQueryLog();
+
+        $name = \Illuminate\Support\Str::random(4);
+
+        User::create([
+            'name' => $name,
+            'email' => $name . '@gmail.com',
+            'password' => Hash::make($name),
+        ]);
+
+        $query = DB::getQueryLog();
+
+        Log::info('', $query);
+    }
+
+
+
+
+
 }

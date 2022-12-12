@@ -17,6 +17,8 @@
 
 
 Route::get('/', 'TestController@index');
-
-//Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->name('logs');
+Route::get('/create', 'TestController@create');
+Route::get('/singleCreate', 'TestController@singleCreate');
+Route::get('/singleSelect', 'SingleController@singleSelect');
+Route::get('/allSelect', 'SingleController@allSelect');
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
