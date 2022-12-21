@@ -53,11 +53,16 @@ class Connection extends BaseConnection
 //            $comments = $comments + $carrier;
 //        }
 
+        $comments['carrier'] = 'carrier';
+
         $query = trim($query);
         $hasSemicolon = $query[-1] === ';';
         $query = rtrim($query, ';');
+        
 
-        return $query . Utils::formatComments(array_filter($comments)) . ($hasSemicolon ? ';' : '');
+//        dd( Utils::formatComments(array_filter($comments)) . ($hasSemicolon ? ';' : '') . $query);
+
+        return Utils::formatComments(array_filter($comments)) . ($hasSemicolon ? ';' : '') . $query;
     }
 
 }
